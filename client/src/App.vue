@@ -5,14 +5,14 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         
         <!-- Logo Corporativo -->
-        <router-link to="/" class="flex items-center space-x-2 text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 hover:text-indigo-650 dark:hover:text-white transition-all duration-200">
-          <Ticket class="h-5 w-5 text-indigo-500" />
+        <router-link to="/" class="flex items-center space-x-1.5 sm:space-x-2 text-base sm:text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 hover:text-indigo-650 dark:hover:text-white transition-all duration-200">
+          <Ticket class="h-5 w-5 text-indigo-500 shrink-0" />
           <span>TICKET<span class="text-indigo-600 dark:text-indigo-400 font-semibold">PASS</span></span>
         </router-link>
 
         <!-- Navegación y Sesión -->
-        <nav class="flex items-center space-x-4">
-          <router-link to="/" class="text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors duration-150 px-1 py-1" active-class="text-zinc-900 dark:text-zinc-100 font-medium border-b border-zinc-900 dark:border-zinc-100 pb-0.5 pt-0.5">
+        <nav class="flex items-center space-x-2 sm:space-x-4">
+          <router-link to="/" class="text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors duration-150 px-1 py-1" active-class="text-zinc-900 dark:text-zinc-100 font-medium border-b border-zinc-900 dark:border-zinc-100 pb-0.5 pt-0.5">
             Inicio
           </router-link>
 
@@ -20,57 +20,60 @@
           <router-link 
             v-if="authStore.isAuthenticated && authStore.user?.rol === 'admin'" 
             to="/admin" 
-            class="text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors duration-150 flex items-center space-x-1.5 px-1 py-1"
+            class="text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors duration-150 flex items-center space-x-1.5 px-1 py-1"
             active-class="text-zinc-900 dark:text-zinc-100 font-medium border-b border-zinc-900 dark:border-zinc-100 pb-0.5 pt-0.5"
           >
-            <Shield class="h-4 w-4 text-amber-500" />
-            <span>Consola Admin</span>
+            <Shield class="h-4 w-4 text-amber-500 shrink-0" />
+            <span class="hidden sm:inline">Consola Admin</span>
           </router-link>
 
-          <span class="h-4 w-[1px] bg-zinc-200 dark:bg-zinc-800"></span>
+          <span class="hidden sm:block h-4 w-[1px] bg-zinc-200 dark:bg-zinc-800"></span>
 
           <!-- Usuario Autenticado -->
-          <div v-if="authStore.isAuthenticated" class="flex items-center space-x-3">
+          <div v-if="authStore.isAuthenticated" class="flex items-center space-x-2 sm:space-x-3">
             <router-link 
               to="/profile" 
-              class="hidden md:flex items-center space-x-1.5 text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors duration-150"
+              class="hidden md:flex items-center space-x-1.5 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors duration-150"
               active-class="text-zinc-900 dark:text-zinc-100 font-medium border-b border-zinc-900 dark:border-zinc-100 pb-0.5 pt-0.5"
             >
-              <User class="h-4 w-4 text-zinc-400 dark:text-zinc-500" />
+              <User class="h-4 w-4 text-zinc-400 dark:text-zinc-500 shrink-0" />
               <span>{{ authStore.user?.nombre }}</span>
             </router-link>
             <button 
               @click="handleLogout" 
-              class="px-3.5 py-1.5 rounded text-xs font-semibold bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white transition-all duration-150 flex items-center space-x-1 cursor-pointer"
+              class="px-2.5 sm:px-3.5 py-1.5 rounded text-[11px] sm:text-xs font-semibold bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white transition-all duration-150 flex items-center space-x-1 cursor-pointer shrink-0"
+              title="Cerrar Sesión"
             >
               <LogOut class="h-3.5 w-3.5" />
-              <span>Cerrar Sesión</span>
+              <span class="hidden sm:inline">Cerrar Sesión</span>
             </button>
           </div>
 
           <!-- Invitado (No autenticado) -->
-          <div v-else class="flex items-center space-x-2">
+          <div v-else class="flex items-center space-x-1.5 sm:space-x-2">
             <router-link 
               to="/login" 
-              class="text-xs font-semibold text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors duration-150 px-3 py-1.5 flex items-center space-x-1"
+              class="text-[11px] sm:text-xs font-semibold text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors duration-150 px-2 sm:px-3 py-1.5 flex items-center space-x-1 shrink-0"
+              title="Ingresar"
             >
               <LogIn class="h-3.5 w-3.5" />
-              <span>Ingresar</span>
+              <span class="hidden sm:inline">Ingresar</span>
             </router-link>
             <router-link 
               to="/register" 
-              class="px-3.5 py-1.5 rounded text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white transition-all duration-150 shadow-sm"
+              class="px-2.5 sm:px-3.5 py-1.5 rounded text-[11px] sm:text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white transition-all duration-150 shadow-sm shrink-0"
             >
-              Registrarse
+              <span class="hidden sm:inline">Registrarse</span>
+              <span class="sm:hidden">Registro</span>
             </router-link>
           </div>
 
-          <span class="h-4 w-[1px] bg-zinc-200 dark:bg-zinc-800"></span>
+          <span class="hidden sm:block h-4 w-[1px] bg-zinc-200 dark:bg-zinc-800"></span>
 
           <!-- Botón de Alternar Tema (Al extremo derecho) -->
           <button 
             @click="toggleTheme" 
-            class="p-2 rounded hover:bg-zinc-100 dark:hover:bg-zinc-900 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors duration-150 cursor-pointer"
+            class="p-2 rounded hover:bg-zinc-100 dark:hover:bg-zinc-900 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors duration-150 cursor-pointer shrink-0"
             title="Alternar Tema (Claro / Oscuro)"
           >
             <Sun v-if="theme === 'dark'" class="h-4.5 w-4.5" />
