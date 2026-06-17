@@ -29,18 +29,6 @@
 
           <span class="h-4 w-[1px] bg-zinc-200 dark:bg-zinc-800"></span>
 
-          <!-- Botón de Alternar Tema -->
-          <button 
-            @click="toggleTheme" 
-            class="p-2 rounded hover:bg-zinc-100 dark:hover:bg-zinc-900 text-zinc-550 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors duration-150 cursor-pointer"
-            title="Alternar Tema (Claro / Oscuro)"
-          >
-            <Sun v-if="theme === 'dark'" class="h-4.5 w-4.5" />
-            <Moon v-else class="h-4.5 w-4.5" />
-          </button>
-
-          <span class="h-4 w-[1px] bg-zinc-200 dark:bg-zinc-800"></span>
-
           <!-- Usuario Autenticado -->
           <div v-if="authStore.isAuthenticated" class="flex items-center space-x-3">
             <router-link 
@@ -76,6 +64,18 @@
               Registrarse
             </router-link>
           </div>
+
+          <span class="h-4 w-[1px] bg-zinc-200 dark:bg-zinc-800"></span>
+
+          <!-- Botón de Alternar Tema (Al extremo derecho) -->
+          <button 
+            @click="toggleTheme" 
+            class="p-2 rounded hover:bg-zinc-100 dark:hover:bg-zinc-900 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors duration-150 cursor-pointer"
+            title="Alternar Tema (Claro / Oscuro)"
+          >
+            <Sun v-if="theme === 'dark'" class="h-4.5 w-4.5" />
+            <Moon v-else class="h-4.5 w-4.5" />
+          </button>
         </nav>
 
       </div>
