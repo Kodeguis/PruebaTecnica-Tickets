@@ -33,11 +33,12 @@
           <div v-if="authStore.isAuthenticated" class="flex items-center space-x-2 sm:space-x-3">
             <router-link 
               to="/profile" 
-              class="hidden md:flex items-center space-x-1.5 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors duration-150"
+              class="flex items-center space-x-1.5 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors duration-150 px-1 py-1"
               active-class="text-zinc-900 dark:text-zinc-100 font-medium border-b border-zinc-900 dark:border-zinc-100 pb-0.5 pt-0.5"
+              title="Mi Perfil"
             >
               <User class="h-4 w-4 text-zinc-400 dark:text-zinc-500 shrink-0" />
-              <span>{{ authStore.user?.nombre }}</span>
+              <span class="hidden md:inline">{{ authStore.user?.nombre }}</span>
             </router-link>
             <button 
               @click="handleLogout" 
